@@ -1,0 +1,662 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAF99B28292CC34100D79C6F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B27292CC34100D79C6F /* AppDelegate.swift */; };
+		DAF99B2C292CC34100D79C6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B2B292CC34100D79C6F /* ViewController.swift */; };
+		DAF99B31292CC34300D79C6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAF99B30292CC34300D79C6F /* Assets.xcassets */; };
+		DAF99B34292CC34300D79C6F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAF99B32292CC34300D79C6F /* LaunchScreen.storyboard */; };
+		DAF99B3F292CC34400D79C6F /* PenBreakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B3E292CC34400D79C6F /* PenBreakerTests.swift */; };
+		DAF99B49292CC34400D79C6F /* PenBreakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B48292CC34400D79C6F /* PenBreakerUITests.swift */; };
+		DAF99B4B292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B4A292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift */; };
+		DAF99B58292CC3BD00D79C6F /* SketchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B57292CC3BD00D79C6F /* SketchView.swift */; };
+		DAF99B5B292CC52700D79C6F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B5A292CC52700D79C6F /* SnapKit */; };
+		DAF99B5E292CC53700D79C6F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B5D292CC53700D79C6F /* Then */; };
+		DAF99B64292DA74200D79C6F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B63292DA74200D79C6F /* RxCocoa */; };
+		DAF99B66292DA74200D79C6F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B65292DA74200D79C6F /* RxSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DAF99B3B292CC34400D79C6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAF99B1C292CC34000D79C6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAF99B23292CC34100D79C6F;
+			remoteInfo = PenBreaker;
+		};
+		DAF99B45292CC34400D79C6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DAF99B1C292CC34000D79C6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAF99B23292CC34100D79C6F;
+			remoteInfo = PenBreaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DAF99B24292CC34100D79C6F /* PenBreaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenBreaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF99B27292CC34100D79C6F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DAF99B2B292CC34100D79C6F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DAF99B30292CC34300D79C6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAF99B33292CC34300D79C6F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DAF99B35292CC34300D79C6F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAF99B3A292CC34400D79C6F /* PenBreakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PenBreakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF99B3E292CC34400D79C6F /* PenBreakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenBreakerTests.swift; sourceTree = "<group>"; };
+		DAF99B44292CC34400D79C6F /* PenBreakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PenBreakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF99B48292CC34400D79C6F /* PenBreakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenBreakerUITests.swift; sourceTree = "<group>"; };
+		DAF99B4A292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenBreakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DAF99B57292CC3BD00D79C6F /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAF99B21292CC34100D79C6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF99B64292DA74200D79C6F /* RxCocoa in Frameworks */,
+				DAF99B5B292CC52700D79C6F /* SnapKit in Frameworks */,
+				DAF99B66292DA74200D79C6F /* RxSwift in Frameworks */,
+				DAF99B5E292CC53700D79C6F /* Then in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B37292CC34400D79C6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B41292CC34400D79C6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAF99B1B292CC34000D79C6F = {
+			isa = PBXGroup;
+			children = (
+				DAF99B26292CC34100D79C6F /* PenBreaker */,
+				DAF99B3D292CC34400D79C6F /* PenBreakerTests */,
+				DAF99B47292CC34400D79C6F /* PenBreakerUITests */,
+				DAF99B25292CC34100D79C6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAF99B25292CC34100D79C6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAF99B24292CC34100D79C6F /* PenBreaker.app */,
+				DAF99B3A292CC34400D79C6F /* PenBreakerTests.xctest */,
+				DAF99B44292CC34400D79C6F /* PenBreakerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAF99B26292CC34100D79C6F /* PenBreaker */ = {
+			isa = PBXGroup;
+			children = (
+				DAF99B27292CC34100D79C6F /* AppDelegate.swift */,
+				DAF99B2B292CC34100D79C6F /* ViewController.swift */,
+				DAF99B30292CC34300D79C6F /* Assets.xcassets */,
+				DAF99B32292CC34300D79C6F /* LaunchScreen.storyboard */,
+				DAF99B35292CC34300D79C6F /* Info.plist */,
+				DAF99B57292CC3BD00D79C6F /* SketchView.swift */,
+			);
+			path = PenBreaker;
+			sourceTree = "<group>";
+		};
+		DAF99B3D292CC34400D79C6F /* PenBreakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				DAF99B3E292CC34400D79C6F /* PenBreakerTests.swift */,
+			);
+			path = PenBreakerTests;
+			sourceTree = "<group>";
+		};
+		DAF99B47292CC34400D79C6F /* PenBreakerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DAF99B48292CC34400D79C6F /* PenBreakerUITests.swift */,
+				DAF99B4A292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift */,
+			);
+			path = PenBreakerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAF99B23292CC34100D79C6F /* PenBreaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF99B4E292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreaker" */;
+			buildPhases = (
+				DAF99B20292CC34100D79C6F /* Sources */,
+				DAF99B21292CC34100D79C6F /* Frameworks */,
+				DAF99B22292CC34100D79C6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PenBreaker;
+			packageProductDependencies = (
+				DAF99B5A292CC52700D79C6F /* SnapKit */,
+				DAF99B5D292CC53700D79C6F /* Then */,
+				DAF99B63292DA74200D79C6F /* RxCocoa */,
+				DAF99B65292DA74200D79C6F /* RxSwift */,
+			);
+			productName = PenBreaker;
+			productReference = DAF99B24292CC34100D79C6F /* PenBreaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DAF99B39292CC34400D79C6F /* PenBreakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF99B51292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreakerTests" */;
+			buildPhases = (
+				DAF99B36292CC34400D79C6F /* Sources */,
+				DAF99B37292CC34400D79C6F /* Frameworks */,
+				DAF99B38292CC34400D79C6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAF99B3C292CC34400D79C6F /* PBXTargetDependency */,
+			);
+			name = PenBreakerTests;
+			productName = PenBreakerTests;
+			productReference = DAF99B3A292CC34400D79C6F /* PenBreakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DAF99B43292CC34400D79C6F /* PenBreakerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF99B54292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreakerUITests" */;
+			buildPhases = (
+				DAF99B40292CC34400D79C6F /* Sources */,
+				DAF99B41292CC34400D79C6F /* Frameworks */,
+				DAF99B42292CC34400D79C6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DAF99B46292CC34400D79C6F /* PBXTargetDependency */,
+			);
+			name = PenBreakerUITests;
+			productName = PenBreakerUITests;
+			productReference = DAF99B44292CC34400D79C6F /* PenBreakerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAF99B1C292CC34000D79C6F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					DAF99B23292CC34100D79C6F = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					DAF99B39292CC34400D79C6F = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = DAF99B23292CC34100D79C6F;
+					};
+					DAF99B43292CC34400D79C6F = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = DAF99B23292CC34100D79C6F;
+					};
+				};
+			};
+			buildConfigurationList = DAF99B1F292CC34000D79C6F /* Build configuration list for PBXProject "PenBreaker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DAF99B1B292CC34000D79C6F;
+			packageReferences = (
+				DAF99B59292CC52700D79C6F /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DAF99B5C292CC53700D79C6F /* XCRemoteSwiftPackageReference "Then" */,
+				DAF99B62292DA74200D79C6F /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
+			productRefGroup = DAF99B25292CC34100D79C6F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAF99B23292CC34100D79C6F /* PenBreaker */,
+				DAF99B39292CC34400D79C6F /* PenBreakerTests */,
+				DAF99B43292CC34400D79C6F /* PenBreakerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAF99B22292CC34100D79C6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF99B34292CC34300D79C6F /* LaunchScreen.storyboard in Resources */,
+				DAF99B31292CC34300D79C6F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B38292CC34400D79C6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B42292CC34400D79C6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAF99B20292CC34100D79C6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF99B2C292CC34100D79C6F /* ViewController.swift in Sources */,
+				DAF99B58292CC3BD00D79C6F /* SketchView.swift in Sources */,
+				DAF99B28292CC34100D79C6F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B36292CC34400D79C6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF99B3F292CC34400D79C6F /* PenBreakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAF99B40292CC34400D79C6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAF99B49292CC34400D79C6F /* PenBreakerUITests.swift in Sources */,
+				DAF99B4B292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DAF99B3C292CC34400D79C6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAF99B23292CC34100D79C6F /* PenBreaker */;
+			targetProxy = DAF99B3B292CC34400D79C6F /* PBXContainerItemProxy */;
+		};
+		DAF99B46292CC34400D79C6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DAF99B23292CC34100D79C6F /* PenBreaker */;
+			targetProxy = DAF99B45292CC34400D79C6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DAF99B32292CC34300D79C6F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAF99B33292CC34300D79C6F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAF99B4C292CC34400D79C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DAF99B4D292CC34400D79C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DAF99B4F292CC34400D79C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPGXX3JG6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PenBreaker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAF99B50292CC34400D79C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPGXX3JG6H;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PenBreaker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DAF99B52292CC34400D79C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PenBreaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PenBreaker";
+			};
+			name = Debug;
+		};
+		DAF99B53292CC34400D79C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PenBreaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PenBreaker";
+			};
+			name = Release;
+		};
+		DAF99B55292CC34400D79C6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PenBreaker;
+			};
+			name = Debug;
+		};
+		DAF99B56292CC34400D79C6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.PenBreakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PenBreaker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAF99B1F292CC34000D79C6F /* Build configuration list for PBXProject "PenBreaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF99B4C292CC34400D79C6F /* Debug */,
+				DAF99B4D292CC34400D79C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAF99B4E292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF99B4F292CC34400D79C6F /* Debug */,
+				DAF99B50292CC34400D79C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAF99B51292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF99B52292CC34400D79C6F /* Debug */,
+				DAF99B53292CC34400D79C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAF99B54292CC34400D79C6F /* Build configuration list for PBXNativeTarget "PenBreakerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF99B55292CC34400D79C6F /* Debug */,
+				DAF99B56292CC34400D79C6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DAF99B59292CC52700D79C6F /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		DAF99B5C292CC53700D79C6F /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		DAF99B62292DA74200D79C6F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DAF99B5A292CC52700D79C6F /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAF99B59292CC52700D79C6F /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		DAF99B5D292CC53700D79C6F /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAF99B5C292CC53700D79C6F /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		DAF99B63292DA74200D79C6F /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAF99B62292DA74200D79C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DAF99B65292DA74200D79C6F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DAF99B62292DA74200D79C6F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DAF99B1C292CC34000D79C6F /* Project object */;
+}
