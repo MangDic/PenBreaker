@@ -17,18 +17,22 @@ class SketchView: UIView, PKCanvasViewDelegate {
     // MARK: Properties
     let disposeBag = DisposeBag()
     
+    let shareRelay = PublishRelay<UIImage>()
+    
     var bottomInset: CGFloat = 0.0
     var sizeBtnArr = [UIButton]()
     
     let menuSelectedRelay = PublishRelay<ToolData>()
     var currentInkingTool = PKInkingTool(.pen, color: .black, width: 5)
     
+    var menuColor = #colorLiteral(red: 0.6945146918, green: 0.5492494106, blue: 0.9612906575, alpha: 1)
     var colorArr: [UIColor] = [#colorLiteral(red: 0.06274510175, green: 0, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1), #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)]
     var currentBtn: UIButton?
     
+    var isDrawingMode = false
     var toolBtnSelected = false
     var sizeBtnSeleted = false
-    var penBtnSeleted = false
+    var penTypeBtnSeleted = false
     var colorBtnSeleted = false
     
     // MARK: Init
@@ -44,6 +48,11 @@ class SketchView: UIView, PKCanvasViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Dependency Injection
+    func setupDI(shareRelay: PublishRelay<UIImage>) {
+        self.shareRelay.bind(to: shareRelay).disposed(by: disposeBag)
+    }
+    
     // MARK: Binding
     private func bind() {
         menuSelectedRelay.subscribe(onNext: { [weak self] data in
@@ -54,8 +63,8 @@ class SketchView: UIView, PKCanvasViewDelegate {
             switch data.type {
             case .ink:
                 ink = data.value as! PKInkingTool.InkType
-                self.penBtn.setTitle("\(ink)", for: .normal)
-                self.penBtnSeleted = false
+                self.penTypeBtn.setTitle("\(ink)", for: .normal)
+                self.penTypeBtnSeleted = false
                 self.hideSelectView(animateView: self.penSelectView)
             case .color:
                 color = data.value as! UIColor
@@ -86,6 +95,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
         changeColor(tag: 0, btn: btn)
     }
     
+    /// animateView를 보여줍니다. baseView 프레임 높이만큼 올립니다.
     private func showSelectView(animateView: UIView, baseView: UIView, hiddenFlag: Bool = true, isMenuView: Bool = false) {
         var height: CGFloat = -baseView.frame.height + bottomInset
         if isMenuView {
@@ -98,6 +108,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
         })
     }
     
+    /// animateView를 숨깁니다.
     private func hideSelectView(animateView: UIView, hiddenFlag: Bool = true) {
         UIView.animate(withDuration: 0.4, delay: 0, animations: {
             animateView.alpha = hiddenFlag ? 0.0 : 1.0
@@ -115,6 +126,10 @@ class SketchView: UIView, PKCanvasViewDelegate {
         menuSelectedRelay.accept(ToolData(type: .color, value: colorArr[tag]))
     }
     
+    private func changeDrawingMode() {
+        canvasView.tool = isDrawingMode ? currentInkingTool : PKEraserTool(.bitmap)
+    }
+    
     private func safeAreaBottomInset() -> CGFloat {
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow
@@ -129,6 +144,24 @@ class SketchView: UIView, PKCanvasViewDelegate {
         bottomInset = safeAreaBottomInset()
     }
     
+    private func changeDrawingBtnBackground() {
+        let penColor = isDrawingMode ? #colorLiteral(red: 0.8841331601, green: 0.8952633739, blue: 0.8950676322, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        let eraserColor = !isDrawingMode ? #colorLiteral(red: 0.8841331601, green: 0.8952633739, blue: 0.8950676322, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        
+        penBtn.backgroundColor = penColor
+        eraserBtn.backgroundColor = eraserColor
+    }
+    
+    private func share() {
+        guard let image = canvasView.transfromToImage() else { return }
+        self.shareRelay.accept(image)
+    }
+    
+    private func download() {
+        guard let image = canvasView.transfromToImage() else { return }
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
     // MARK: View
     lazy var canvasView = PKCanvasView(frame: self.bounds).then {
         $0.backgroundColor = #colorLiteral(red: 1, green: 0.9518870711, blue: 0.8127006888, alpha: 1)
@@ -137,8 +170,10 @@ class SketchView: UIView, PKCanvasViewDelegate {
     lazy var doBtnStack = UIStackView()
     
     lazy var undoBtn = UIButton().then {
-        $0.setImage(UIImage(systemName: "arrow.uturn.backward"), for: .normal)
-        $0.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 17, weight: .bold, scale: .large)
+        let largeBoldDoc = UIImage(systemName: "arrow.uturn.backward", withConfiguration: largeConfig)
+        $0.setImage(largeBoldDoc, for: .normal)
+        $0.tintColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         $0.rx.tap.subscribe(onNext: { [weak self] in
             guard let `self` = self else { return }
             guard let canUndo = self.undoManager?.canUndo else { return }
@@ -149,8 +184,11 @@ class SketchView: UIView, PKCanvasViewDelegate {
     }
     
     lazy var redoBtn = UIButton().then {
-        $0.setImage(UIImage(systemName: "arrow.uturn.right"), for: .normal)
-        $0.tintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 17, weight: .bold, scale: .large)
+        let largeBoldDoc = UIImage(systemName: "arrow.uturn.right", withConfiguration: largeConfig)
+        $0.setImage(largeBoldDoc, for: .normal)
+        $0.tintColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        
         $0.rx.tap.subscribe(onNext: { [weak self] in
             guard let `self` = self else { return }
             guard let canRedo = self.undoManager?.canRedo else { return }
@@ -161,26 +199,35 @@ class SketchView: UIView, PKCanvasViewDelegate {
     }
     
     lazy var toolBtn = UIButton().then { btn in
+        let largeConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .bold, scale: .large)
+        let upImage = UIImage(systemName: "chevron.up", withConfiguration: largeConfig)
+        let downImage = UIImage(systemName: "chevron.down", withConfiguration: largeConfig)
+        
         btn.layer.cornerRadius = 10
         btn.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         btn.backgroundColor = #colorLiteral(red: 0.8751407862, green: 0.8861578107, blue: 0.8859640956, alpha: 1)
-        btn.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        btn.setImage(upImage, for: .normal)
+        btn.setImage(downImage, for: .selected)
         btn.tintColor = .white
         btn.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
                 self.toolBtnSelected = !self.toolBtnSelected
+                btn.isSelected = self.toolBtnSelected
                 self.setBottomInset()
                 
                 self.toolBtnSelected ? self.showSelectView(animateView: self.toolView, baseView: self.toolView, hiddenFlag: false) : self.hideSelectView(animateView: self.toolView, hiddenFlag: false)
                 
                 self.toolBtnSelected ? self.showSelectView(animateView: btn, baseView: self.toolView, hiddenFlag: false) : self.hideSelectView(animateView: btn, hiddenFlag: false)
+                
+                self.penSelectView.isHidden = true
+                self.sizeSelectView.isHidden = true
             }).disposed(by: disposeBag)
     }
     
     lazy var toolView = UIView().then {
         $0.backgroundColor = .white
-        $0.layer.cornerRadius = 20
+        $0.layer.cornerRadius = 40
         $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
@@ -192,6 +239,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
     lazy var sizeBtn = UIButton().then { btn in
         btn.setTitle("5px", for: .normal)
         btn.setTitleColor(.lightGray, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         btn.layer.cornerRadius = 4
         btn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         btn.layer.borderWidth = 2
@@ -227,6 +275,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
             let btn = UIButton().then {
                 $0.setTitle("\(Int(menu))px", for: .normal)
                 $0.setTitleColor(.lightGray, for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
                 $0.rx.tap.subscribe(onNext: {
                     self.currentInkingTool.width = menu
                     self.menuSelectedRelay.accept(ToolData(type: .width, value: menu))
@@ -242,18 +291,19 @@ class SketchView: UIView, PKCanvasViewDelegate {
         }
     }
     
-    lazy var penBtn = UIButton().then { btn in
+    lazy var penTypeBtn = UIButton().then { btn in
         btn.setTitle("pen", for: .normal)
         btn.setTitleColor(.lightGray, for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         btn.layer.cornerRadius = 4
         btn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         btn.layer.borderWidth = 2
         btn.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
-                self.penBtnSeleted = !self.penBtnSeleted
+                self.penTypeBtnSeleted = !self.penTypeBtnSeleted
                 
-                self.penBtnSeleted ? self.showSelectView(animateView: self.penSelectView, baseView: btn, isMenuView: true) : self.hideSelectView(animateView: self.penSelectView)
+                self.penTypeBtnSeleted ? self.showSelectView(animateView: self.penSelectView, baseView: btn, isMenuView: true) : self.hideSelectView(animateView: self.penSelectView)
             }).disposed(by: disposeBag)
     }
     
@@ -282,6 +332,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
             let btn = UIButton().then {
                 $0.setTitle("\(menu)", for: .normal)
                 $0.setTitleColor(.lightGray, for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
                 $0.rx.tap.subscribe(onNext: {
                     self.menuSelectedRelay.accept(ToolData(type: .ink, value: menu))
                 }).disposed(by: disposeBag)
@@ -292,6 +343,52 @@ class SketchView: UIView, PKCanvasViewDelegate {
             }
             index += 1
         }
+    }
+    
+    lazy var penBtn = UIButton().then {
+        $0.setImage(UIImage(named: "pen")?
+            .withTintColor(menuColor), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        $0.layer.cornerRadius = 15
+        $0.backgroundColor = #colorLiteral(red: 0.8983803391, green: 0.9096899629, blue: 0.9094910026, alpha: 1)
+        $0.rx.tap.subscribe(onNext: { [weak self] in
+            guard let `self` = self else { return }
+            self.isDrawingMode = true
+            self.changeDrawingMode()
+            self.changeDrawingBtnBackground()
+        }).disposed(by: disposeBag)
+    }
+    
+    lazy var eraserBtn = UIButton().then {
+        $0.setImage(UIImage(named: "eraser")?
+            .withTintColor(menuColor), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        $0.layer.cornerRadius = 15
+        $0.rx.tap.subscribe(onNext: { [weak self] in
+            guard let `self` = self else { return }
+            self.isDrawingMode = false
+            self.changeDrawingMode()
+            self.changeDrawingBtnBackground()
+        }).disposed(by: disposeBag)
+    }
+    
+    lazy var shareBtn = UIButton().then {
+        $0.setImage(UIImage(named: "share")?
+            .withTintColor(menuColor), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        $0.rx.tap.subscribe(onNext: { [weak self] in
+            guard let `self` = self else { return }
+            self.share()
+        }).disposed(by: disposeBag)
+    }
+    
+    lazy var downloadBtn = UIButton().then {
+        $0.setImage(UIImage(named: "download")?
+            .withTintColor(menuColor), for: .normal)
+        $0.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        $0.rx.tap.subscribe(onNext: { [weak self] in
+            guard let `self` = self else { return }
+        }).disposed(by: disposeBag)
     }
     
     lazy var colorStack = UIStackView().then {
@@ -322,6 +419,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
             colorBtn.snp.makeConstraints {
                 $0.size.equalTo(40)
             }
+            
             colorView.snp.makeConstraints {
                 $0.size.equalTo(30)
                 $0.center.equalToSuperview()
@@ -330,21 +428,28 @@ class SketchView: UIView, PKCanvasViewDelegate {
             if tag == 0 {
                 self.currentBtn = colorBtn
             }
-            
             tag += 1
         }
-        
         $0.addArrangedSubview(UIView())
     }
     
+    lazy var toastView = UIView().then {
+        $0.backgroundColor = .black
+        $0.layer.cornerRadius = 8
+        $0.isHidden = true
+        $0.alpha = 0
+        $0.isUserInteractionEnabled = false
+    }
+    
     private func setupLayout() {
+        let spacingView = UIView()
+        
         addSubview(canvasView)
         addSubview(toolBtn)
         addSubview(toolView)
         addSubview(sizeSelectView)
         addSubview(penSelectView)
-        
-        canvasView.addSubview(doBtnStack)
+        addSubview(doBtnStack)
         
         doBtnStack.addArrangedSubview(undoBtn)
         doBtnStack.addArrangedSubview(redoBtn)
@@ -353,7 +458,12 @@ class SketchView: UIView, PKCanvasViewDelegate {
         toolView.addSubview(colorStack)
         
         toolStack.addArrangedSubview(sizeBtn)
+        toolStack.addArrangedSubview(penTypeBtn)
         toolStack.addArrangedSubview(penBtn)
+        toolStack.addArrangedSubview(eraserBtn)
+        toolStack.addArrangedSubview(spacingView)
+        toolStack.addArrangedSubview(downloadBtn)
+        toolStack.addArrangedSubview(shareBtn)
         toolStack.addArrangedSubview(UIView())
         
         canvasView.snp.makeConstraints {
@@ -361,16 +471,15 @@ class SketchView: UIView, PKCanvasViewDelegate {
         }
         
         doBtnStack.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).inset(20)
-            $0.trailing.equalTo(safeAreaLayoutGuide)
+            $0.top.trailing.equalTo(safeAreaLayoutGuide).inset(20)
         }
         
         undoBtn.snp.makeConstraints {
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
         }
         
         redoBtn.snp.makeConstraints {
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
         }
         
         toolBtn.snp.makeConstraints {
@@ -390,7 +499,7 @@ class SketchView: UIView, PKCanvasViewDelegate {
         }
         
         sizeBtn.snp.makeConstraints {
-            $0.size.equalTo(CGSize(width: 70, height: 40))
+            $0.size.equalTo(CGSize(width: 60, height: 30))
         }
         
         sizeSelectView.snp.makeConstraints {
@@ -398,13 +507,33 @@ class SketchView: UIView, PKCanvasViewDelegate {
             $0.bottom.equalTo(sizeBtn.snp.top)
         }
         
-        penBtn.snp.makeConstraints {
-            $0.size.equalTo(CGSize(width: 70, height: 40))
+        penTypeBtn.snp.makeConstraints {
+            $0.size.equalTo(CGSize(width: 60, height: 30))
         }
         
         penSelectView.snp.makeConstraints {
-            $0.leading.width.equalTo(penBtn)
-            $0.bottom.equalTo(penBtn.snp.top)
+            $0.leading.width.equalTo(penTypeBtn)
+            $0.bottom.equalTo(penTypeBtn.snp.top)
+        }
+        
+        penBtn.snp.makeConstraints {
+            $0.size.equalTo(30)
+        }
+        
+        eraserBtn.snp.makeConstraints {
+            $0.size.equalTo(30)
+        }
+        
+        spacingView.snp.makeConstraints {
+            $0.width.equalTo(20)
+        }
+        
+        downloadBtn.snp.makeConstraints {
+            $0.size.equalTo(30)
+        }
+        
+        shareBtn.snp.makeConstraints {
+            $0.size.equalTo(30)
         }
         
         colorStack.snp.makeConstraints {

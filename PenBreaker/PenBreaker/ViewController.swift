@@ -6,16 +6,37 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
-
+    // MARK: Properties
+    let disposeBag = DisposeBag()
+    let shareRelay = PublishRelay<UIImage>()
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
+        bind()
     }
 
-
+    // MARK: Binding
+    private func bind() {
+        sketchView
+            .setupDI(shareRelay: shareRelay)
+        
+        shareRelay.subscribe(onNext: { [weak self] image in
+            guard let `self` = self else { return }
+            
+            let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
+    }
+    
+    // MARK: View
     lazy var sketchView = SketchView()
     
     private func setupLayout() {

@@ -19,6 +19,7 @@
 		DAF99B5E292CC53700D79C6F /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B5D292CC53700D79C6F /* Then */; };
 		DAF99B64292DA74200D79C6F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B63292DA74200D79C6F /* RxCocoa */; };
 		DAF99B66292DA74200D79C6F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DAF99B65292DA74200D79C6F /* RxSwift */; };
+		DAF99B69292F653C00D79C6F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF99B68292F653C00D79C6F /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		DAF99B48292CC34400D79C6F /* PenBreakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenBreakerUITests.swift; sourceTree = "<group>"; };
 		DAF99B4A292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenBreakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DAF99B57292CC3BD00D79C6F /* SketchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchView.swift; sourceTree = "<group>"; };
+		DAF99B68292F653C00D79C6F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		DAF99B26292CC34100D79C6F /* PenBreaker */ = {
 			isa = PBXGroup;
 			children = (
+				DAF99B67292F652B00D79C6F /* Extension */,
 				DAF99B27292CC34100D79C6F /* AppDelegate.swift */,
 				DAF99B2B292CC34100D79C6F /* ViewController.swift */,
 				DAF99B30292CC34300D79C6F /* Assets.xcassets */,
@@ -130,6 +133,14 @@
 				DAF99B4A292CC34400D79C6F /* PenBreakerUITestsLaunchTests.swift */,
 			);
 			path = PenBreakerUITests;
+			sourceTree = "<group>";
+		};
+		DAF99B67292F652B00D79C6F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DAF99B68292F653C00D79C6F /* UIView+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF99B69292F653C00D79C6F /* UIView+.swift in Sources */,
 				DAF99B2C292CC34100D79C6F /* ViewController.swift in Sources */,
 				DAF99B58292CC3BD00D79C6F /* SketchView.swift in Sources */,
 				DAF99B28292CC34100D79C6F /* AppDelegate.swift in Sources */,
